@@ -9,15 +9,6 @@
 - **基於位置的服務**：使用 Line 的位置共享功能來尋找最近的 Ubike 車站。
 - **SQL Server 資料庫整合**：用戶資料與查詢記錄將被存儲於資料庫中，供未來分析與改進。
 
-## 安裝
-1. 克隆此儲存庫。
-2. 安裝所需套件：
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. 設置 Microsoft SQL Server 資料庫並配置連接設定。
-4. 將 LineBot 部署到您的 Line 開發者帳戶中。
-
 ## LineBot Webhook 設定
 - **Webhook 事件**：處理收到的訊息時的示例事件 JSON 資料。
     ```json
