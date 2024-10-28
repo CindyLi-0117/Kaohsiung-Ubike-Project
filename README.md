@@ -10,8 +10,8 @@
 - [系統架構](#系統架構)
 - [檔案結構](#檔案結構)
 - [使用說明](#使用說明)
-- [LineBot Webhook 設定](#LineBot Webhook 設定)
-- [SQL 資料庫設置](#SQL 資料庫設置)
+- [LineBot Webhook 設定](#linebot-webhook-設定)
+- [SQL 資料庫設置](#sql-資料庫設置)
 - [未來擴充](#未來擴充)
 
 ## 專案概述
