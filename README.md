@@ -52,8 +52,70 @@
 2. 連接 Line App，與 Bot 互動以查詢站點資訊。
 3. 傳送定位以獲得附近的 Ubike 站點資訊及導航地圖。
 
+## LineBot Webhook 設定
+- **Webhook 事件**：處理收到的訊息時的示例事件 JSON 資料。
+    ```json
+    {
+        "destination": "xxxxxxxxxx",
+        "events": [
+            {
+                "type": "message",
+                "message": {
+                    "type": "text",
+                    "id": "14353798921116",
+                    "text": "Hello, world"
+                },
+                "timestamp": 1625665242211,
+                "source": {
+                    "type": "user",
+                    "userId": "U80696558e1aa831..."
+                },
+                "replyToken": "757913772c4646b784d4b7ce46d12671",
+                "mode": "active"
+            }
+        ]
+    }
+    ```
+
+- **回覆訊息 API 請求**：
+    ```bash
+    curl -v -X POST https://api.line.me/v2/bot/message/reply     -H "Content-Type: application/json"     -H "Authorization: Bearer {LINE_CHANNEL_ACCESS_TOKEN}"     -d '{
+      "replyToken": "{replyToken}",
+      "messages":[
+        {
+          "type":"text",
+          "text":"這是最近的 Ubike 車站資訊..."
+        }
+      ]
+    }'
+    ```
+
+## SQL 資料庫設置
+- **Microsoft SQL Server 的 DB-API 介面**：
+    ```python
+    import pymssql
+    connection = pymssql.connect(
+      host="localhost",
+      user="yourusername",
+      password="yourpassword",
+      database="mydatabase"
+    )
+    ```
+
+- **資料插入範例**：
+    ```python
+    try:
+        cursor = connection.cursor()
+        insert = "INSERT INTO customers (name, address) VALUES (%s, %s)"
+        cursor.execute(insert, ('John Doe', '123 Elm St'))
+        connection.commit()
+    except Exception as ex:
+        connection.rollback()
+    finally:
+        connection.close()
+    ```
+
 ## 未來擴充
 - **多媒體查詢**：擴充支援文字、圖片及語音查詢。
 - **會員系統整合**：支援 Ubike 會員管理系統。
 - **需求預測**：利用數據分析來預測車輛需求與可用性。
-
